@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        maven {
+            url 'http://nexus.vdian.net/repository/android/'
+        }
+        maven {
+            url "https://maven.google.com"
+        }
+        jcenter()
+        mavenCentral()
+    }
+    configurations.all {
+        it.resolutionStrategy.cacheDynamicVersionsFor(5, 'minutes')
+        it.resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+    }
+}
+
+apply plugin: 'groovy'
+
+repositories {
+    repositories {
+        maven {
+            url 'http://nexus.vdian.net/repository/android/'
+        }
+        maven {
+            url "https://maven.google.com"
+        }
+        maven {
+            url "file://${project.rootProject.file('../repo')}"
+        }
+        jcenter()
+        mavenCentral()
+    }
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    File localFile = project.rootProject.file('../local.properties')
+    Properties extProperties = new Properties()
+    if (!localFile.exists()) {
+        localFile = project.rootProject.file('local.properties')
+    }
+    if (localFile.exists()) {
+        extProperties.load(localFile.newDataInputStream())
+    }
+    def androidGradlePluginVersion = "3.4.1"
+    if (extProperties.containsKey('gradleVersion')) {
+        androidGradlePluginVersion = extProperties.get("gradleVersion") as String
+    }
+    if (project.hasProperty('gradleVersion')) {
+        androidGradlePluginVersion = project.getProperties().get("gradleVersion") as String
+    }
+    project.logger.error "buildSrc build.gradle androidGradlePluginVersion ${androidGradlePluginVersion}"
+
+    implementation("com.android.tools.build:gradle:${androidGradlePluginVersion}") {
+        changing = true
+    }
+
+}

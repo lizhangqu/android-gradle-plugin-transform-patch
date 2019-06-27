@@ -1,0 +1,71 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        maven {
+            url 'http://nexus.vdian.net/repository/android/'
+        }
+        maven {
+            url "https://maven.google.com"
+        }
+        maven {
+            url "file://${project.rootProject.file('repo')}"
+        }
+        jcenter()
+    }
+    dependencies {
+        File localFile = project.rootProject.file('local.properties')
+        Properties extProperties = new Properties()
+        if (localFile.exists()) {
+            extProperties.load(localFile.newDataInputStream())
+        }
+        def androidGradlePluginVersion = "3.4.1"
+        if (extProperties.containsKey('gradleVersion')) {
+            androidGradlePluginVersion = extProperties.get("gradleVersion") as String
+        }
+        if (project.hasProperty('gradleVersion')) {
+            androidGradlePluginVersion = project.getProperties().get("gradleVersion") as String
+        }
+        project.logger.error "root build.gradle androidGradlePluginVersion ${androidGradlePluginVersion}"
+
+        classpath("com.android.tools.build:gradle:${androidGradlePluginVersion}") {
+            changing = true
+        }
+        classpath('io.github.lizhangqu:core-publish:1.4.0') { changing = true }
+
+    }
+    configurations.all {
+        it.resolutionStrategy.cacheDynamicVersionsFor(5, 'minutes')
+        it.resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url 'http://nexus.vdian.net/repository/android/'
+        }
+        maven {
+            url "https://maven.google.com"
+        }
+        maven {
+            url "file://${project.rootProject.file('repo')}"
+        }
+        jcenter()
+    }
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    configurations.all {
+        it.resolutionStrategy.cacheDynamicVersionsFor(5, 'minutes')
+        it.resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+apply from: "${rootProject.file('buildsystem/project_config.gradle')}"
