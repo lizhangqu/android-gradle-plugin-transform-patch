@@ -27,6 +27,12 @@ TransformOutputProvider asOutput(boolean isIncremental) throws IOException {
 
 #### 如何使用修复插件
 
+首先将守护进程杀死
+
+```
+./gradlew --stop
+```
+
 对于工程目录中没有buildSrc模块的工程，可使用如下方式
 
 ```
@@ -60,13 +66,14 @@ apply plugin: 'agp-transform-patch'
 ```
 
 
-如果不生效，可先将守护进程杀死
+
+#### A复现步骤
+
+首先将守护进程杀死
 
 ```
 ./gradlew --stop
 ```
-
-#### A复现步骤
 
 1, 将app模块中对library模块的依赖修改为project依赖
 
@@ -137,6 +144,12 @@ dependencies {
 
 #### B复现步骤
 
+首先将守护进程杀死
+
+```
+./gradlew --stop
+```
+
 1, 将app模块中对library模块的依赖修改为aar依赖
 
 将
@@ -190,6 +203,12 @@ apply plugin: 'reproduce-agp-transform-bug'
 
 #### A修复方案
 
+首先将守护进程杀死
+
+```
+./gradlew --stop
+```
+
 1、应用修复bug用的patch插件
 
 对于工程目录中没有buildSrc模块的工程，可使用如下方式
@@ -229,6 +248,12 @@ apply plugin: 'agp-transform-patch'
 
 #### B修复方案1
 
+首先将守护进程杀死
+
+```
+./gradlew --stop
+```
+
 1、将buildSrc工程下的BaseTransform中的getContentLocation调用第一个入参进行修改
 
 由
@@ -249,6 +274,12 @@ transformInvocation.outputProvider.getContentLocation(it.getFile().toString(), i
 但是此修复方式对第三方插件无效，只对自己写的transform可以修改，因此完美的解决方案请看B修复方案2
 
 #### B修复方案2
+
+首先将守护进程杀死
+
+```
+./gradlew --stop
+```
 
 1、应用修复bug用的patch插件
 
