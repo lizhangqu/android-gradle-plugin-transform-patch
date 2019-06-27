@@ -22,4 +22,8 @@ ext {
     SNAPSHOT_REPOSITORY_USERNAME = ""
     SNAPSHOT_REPOSITORY_PASSWORD = ""
 }
+
+
+group = "io.github.lizhangqu"
+name = "android-gradle-plugin-transfrom-patch"
 apply plugin: 'android.publish'
