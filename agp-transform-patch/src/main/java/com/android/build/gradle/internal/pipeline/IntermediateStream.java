@@ -135,9 +135,11 @@ class IntermediateStream extends TransformStream {
     /** Returns a new view of this content as a {@link TransformOutputProvider}. */
     @NonNull
     TransformOutputProvider asOutput(boolean isIncremental) throws IOException {
+//        just ignore isIncremental param as same as agp 3.1.4
 //        if (!isIncremental) {
 //            FileUtils.deleteIfExists(new File(getRootLocation(), SubStream.FN_FOLDER_CONTENT));
 //        }
+//        
         init();
         return new TransformOutputProviderImpl(folderUtils);
     }
