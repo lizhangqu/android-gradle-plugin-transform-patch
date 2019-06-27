@@ -135,9 +135,9 @@ class IntermediateStream extends TransformStream {
     /** Returns a new view of this content as a {@link TransformOutputProvider}. */
     @NonNull
     TransformOutputProvider asOutput(boolean isIncremental) throws IOException {
-        if (!isIncremental) {
-            FileUtils.deleteIfExists(new File(getRootLocation(), SubStream.FN_FOLDER_CONTENT));
-        }
+//        if (!isIncremental) {
+//            FileUtils.deleteIfExists(new File(getRootLocation(), SubStream.FN_FOLDER_CONTENT));
+//        }
         init();
         return new TransformOutputProviderImpl(folderUtils);
     }
