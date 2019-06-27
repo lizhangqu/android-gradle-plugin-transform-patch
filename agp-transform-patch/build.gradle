@@ -25,5 +25,5 @@ ext {
 
 
 group = "io.github.lizhangqu"
-archivesBaseName = "android-gradle-plugin-transfrom-patch"
+archivesBaseName = "android-gradle-plugin-transform-patch"
 apply plugin: 'android.publish'

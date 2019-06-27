@@ -139,7 +139,7 @@ class IntermediateStream extends TransformStream {
 //        if (!isIncremental) {
 //            FileUtils.deleteIfExists(new File(getRootLocation(), SubStream.FN_FOLDER_CONTENT));
 //        }
-//        
+//
         init();
         return new TransformOutputProviderImpl(folderUtils);
     }
