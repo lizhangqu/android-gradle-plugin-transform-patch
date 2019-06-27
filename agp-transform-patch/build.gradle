@@ -1,0 +1,25 @@
+apply plugin: 'java'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation gradleApi()
+
+    compileOnly("com.android.tools.build:gradle:3.2.0") {
+        changing = true
+    }
+}
+
+ext {
+    RELEASE_REPOSITORY_URL = "file://${project.rootProject.file('repo')}"
+    SNAPSHOT_REPOSITORY_URL = "file://${project.rootProject.file('repo')}"
+    RELEASE_REPOSITORY_USERNAME = ""
+    RELEASE_REPOSITORY_PASSWORD = ""
+    SNAPSHOT_REPOSITORY_USERNAME = ""
+    SNAPSHOT_REPOSITORY_PASSWORD = ""
+}
+apply plugin: 'android.publish'
