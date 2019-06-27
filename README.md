@@ -8,6 +8,22 @@
  - A、以project依赖进行全量构建后，将project发布到远程，再将project依赖修改成aar远程依赖，再进行增量构建，此时会出现类重复。
  - B、全量构建完成后，此时更新任意一个aar，再进行增量构建，此时会出现类重复。
 
+#### 问题产生原因
+
+```
+@NonNull
+TransformOutputProvider asOutput(boolean isIncremental) throws IOException {
+    if (!isIncremental) {
+        FileUtils.deleteIfExists(new File(getRootLocation(), SubStream.FN_FOLDER_CONTENT));
+    }
+    init();
+    return new TransformOutputProviderImpl(folderUtils);
+}
+```
+
+在android gradle plugin 3.2.0及以上版本中，如果第一个transform不是增量构建的，则会删除该transform目录下的__content__.json文件，触发文件名命名规则归0递增。当触发背景中的两个场景的时候，导致原先该被remove的文件没有触发removed事件，而是变成了changed事件，出现类重复。
+
+但是在3.2.0以下版本，该文件不会被删除，文件名命名规则从该文件中最大的index开始递增，当触发背景中的两个场景的时候，由于文件名递增没有被清零所以新增文件触发added事件，原先该被remove的文件触发removed事件，不会出现类重复
 
 ### 如何使用修复插件
 
