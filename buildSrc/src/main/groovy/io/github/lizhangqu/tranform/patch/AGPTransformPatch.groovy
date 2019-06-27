@@ -33,7 +33,7 @@ public class AGPTransformPatch {
             if (!shouldApplyPatch()) {
                 return
             }
-            //why not use to replace classloader ?
+            //why not replace classloader ?
             //because there are some problems when replace it.
             //so we add the file to ucp's loader at first.
             ClassLoader originalClassloader = AGPTransformPatch.class.getClassLoader();
