@@ -12,7 +12,7 @@ public class AGPTransformPatchPlugin implements Plugin<Project> {
     final void apply(Project project) {
         File patchFile
         try {
-            Dependency dependency = project.getDependencies().create("io.github.lizhangqu:android-gradle-plugin-transform-patch:1.0.1-SNAPSHOT")
+            Dependency dependency = project.getDependencies().create("io.github.lizhangqu:android-gradle-plugin-transform-patch:1.0.0")
             Configuration configuration = project.getConfigurations().detachedConfiguration(dependency)
             configuration.setTransitive(false)
             configuration.resolutionStrategy.cacheDynamicVersionsFor(5, 'minutes')

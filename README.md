@@ -18,7 +18,9 @@ B、全量构建完成后，此时更新任意一个aar，再进行增量构建�
 
 ```
 dependencies {
-    implementation "io.github.lizhangqu:library:1.0.0-SNAPSHOT"
+    implementation("io.github.lizhangqu:library:1.0.0-SNAPSHOT") {
+        changing = true
+    }
 }
 ```
 
@@ -65,7 +67,9 @@ dependencies {
 
 ```
 dependencies {
-    implementation "io.github.lizhangqu:library:1.0.0-SNAPSHOT"
+    implementation("io.github.lizhangqu:library:1.0.0-SNAPSHOT") {
+        changing = true
+    }
 }
 ```
 
@@ -91,7 +95,9 @@ dependencies {
 
 ```
 dependencies {
-    implementation "io.github.lizhangqu:library:1.0.0-SNAPSHOT"
+    implementation("io.github.lizhangqu:library:1.0.0-SNAPSHOT") {
+        changing = true
+    }
 }
 ```
 
@@ -107,14 +113,13 @@ apply plugin: 'reproduce-agp-transform-bug'
 ./gradlew :library:clean :library:uploadSnapshot
 ```
 
-
 4, clean并且进行app模块的全量构建
 
 ```
 ./gradlew :app:clean :app:assembleDebug
 ```
 
-5, 重新发布library模块，此时aar会被发布到工程根目录的repo目录下
+5, 修改library模块中任意代码后，重新发布library模块，此时aar会被发布到工程根目录的repo目录下
 
 ```
 ./gradlew :library:clean :library:uploadSnapshot

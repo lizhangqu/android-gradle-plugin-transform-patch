@@ -29,5 +29,7 @@ android {
 
 dependencies {
     implementation project(path: ':library')
-//    implementation "io.github.lizhangqu:library:1.0.0-SNAPSHOT"
+//    implementation("io.github.lizhangqu:library:1.0.0-SNAPSHOT") {
+//        changing = true
+//    }
 }
