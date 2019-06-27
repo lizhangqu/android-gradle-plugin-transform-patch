@@ -49,6 +49,8 @@ public class AGPTransformPatch {
             Object loader = getLoaderMethod.invoke(ucp, url);
             if (!loaders.first().getBaseURL().equals(loader.getBaseURL())) {
                 loaders.add(0, loader);
+            } else {
+                loaders.set(0, loader);
             }
         } catch (Exception e) {
             e.printStackTrace();
