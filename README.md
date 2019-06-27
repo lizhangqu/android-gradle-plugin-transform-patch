@@ -33,7 +33,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.0')
+        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1')
     }
 }
 apply plugin: 'agp-transform-patch'
@@ -172,7 +172,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.0')
+        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1')
     }
 }
 apply plugin: 'agp-transform-patch'
@@ -211,7 +211,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.0')
+        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1')
     }
 }
 apply plugin: 'agp-transform-patch'
