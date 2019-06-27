@@ -1,0 +1,4 @@
+include ':app'
+include ':library'
+include ':agp-transform-patch'
+include ':buildSrc'

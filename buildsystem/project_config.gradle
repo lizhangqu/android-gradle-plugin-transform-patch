@@ -1,0 +1,64 @@
+def supportVersion = '25.3.1'
+def constraintLayoutVersion = '1.1.0'
+def multiDexVersion = '1.0.2'
+
+allprojects {
+    configurations.all {
+        it.resolutionStrategy.cacheDynamicVersionsFor(0, 'seconds')
+        it.resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
+
+        //exclude android.jar
+        exclude group: 'com.google.android', module: 'android'
+
+        //force version
+        it.resolutionStrategy.eachDependency {
+            if (it.requested.group == 'com.android.support' && !it.requested.name.contains('multidex') && !it.requested.name.contains('support-application')) {
+                it.useVersion supportVersion
+            } else if (it.requested.group == 'com.android.support' && it.requested.name.contains('multidex')) {
+                it.useVersion multiDexVersion
+            } else if (it.requested.group == 'com.android.support.constraint') {
+                it.useVersion constraintLayoutVersion
+            } else if (it.requested.group == ' com.google.android' && it.requested.name.contains('flexbox')) {
+                it.useVersion flexBoxVersion
+            }
+
+        }
+    }
+}
+
+project.ext {
+    def METHOD_MAP_GET = Map.metaClass.getMetaMethod("get", Object.class)
+    def filterNullProperty = { def obj, def nodeName, def propertyName ->
+        def result = METHOD_MAP_GET.invoke(obj, propertyName)
+        if (result == null) {
+            throw new GradleException("project_config.gradle 中 property 【project.ext.${nodeName}.${propertyName}】 非法，请修改其值为非null!!!")
+        }
+        return result
+    }
+
+    configuration = [
+            buildToolsVersion: "28.0.3",
+            compileSdkVersion: 28,
+            minSdkVersion    : 16,
+            targetSdkVersion : 22,
+            classifier       : "armeabi"
+    ]
+
+    configuration.metaClass {
+        getProperty = { def propertyName ->
+            return filterNullProperty(configuration, "configuration", propertyName)
+        }
+    }
+
+    google = [
+            support          : supportVersion,
+            constraint_layout: constraintLayoutVersion,
+            multidex         : multiDexVersion,
+    ]
+    google.metaClass {
+        getProperty = { def propertyName ->
+            return filterNullProperty(google, "google", propertyName)
+        }
+    }
+}
+
