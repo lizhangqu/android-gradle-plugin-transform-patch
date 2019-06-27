@@ -10,9 +10,6 @@ buildscript {
             url "https://maven.google.com"
         }
         maven {
-            url ' https://dl.bintray.com/lizhangqu/maven'
-        }
-        maven {
             url "file://${project.rootProject.file('repo')}"
         }
         jcenter()
@@ -51,9 +48,6 @@ allprojects {
         }
         maven {
             url "https://maven.google.com"
-        }
-        maven {
-            url ' https://dl.bintray.com/lizhangqu/maven'
         }
         maven {
             url "file://${project.rootProject.file('repo')}"

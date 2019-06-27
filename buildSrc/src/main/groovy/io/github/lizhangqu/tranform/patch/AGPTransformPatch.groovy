@@ -5,9 +5,6 @@ import org.gradle.api.Project;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.List;
 
 /**
  * agp transform patch when use agp 3.2.0+
