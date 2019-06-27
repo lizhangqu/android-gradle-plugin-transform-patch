@@ -50,7 +50,7 @@ class BaseTransform extends Transform {
 
         transformInvocation.inputs.each {
             it.jarInputs.each {
-                File dest = transformInvocation.outputProvider.getContentLocation(it.getFile().toString(), it.contentTypes, it.scopes, Format.JAR)
+                File dest = transformInvocation.outputProvider.getContentLocation(it.getName(), it.contentTypes, it.scopes, Format.JAR)
                 if (transformInvocation.isIncremental()) {
                     switch (it.getStatus()) {
                         case Status.NOTCHANGED:
@@ -73,7 +73,7 @@ class BaseTransform extends Transform {
             }
             it.directoryInputs.each {
                 File inputDir = it.getFile()
-                File outputDir = transformInvocation.outputProvider.getContentLocation(it.getFile().toString(), it.contentTypes, it.scopes, Format.DIRECTORY)
+                File outputDir = transformInvocation.outputProvider.getContentLocation(it.getName(), it.contentTypes, it.scopes, Format.DIRECTORY)
                 if (transformInvocation.isIncremental()) {
                     for (Map.Entry<File, Status> changedInput : it.getChangedFiles().entrySet()) {
                         File inputFile = changedInput.getKey()
