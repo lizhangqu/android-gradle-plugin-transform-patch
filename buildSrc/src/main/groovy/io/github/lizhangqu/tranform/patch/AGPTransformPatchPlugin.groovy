@@ -26,7 +26,7 @@ public class AGPTransformPatchPlugin implements Plugin<Project> {
             project.logger.error("can't get patch patchFile")
             return
         }
-        AGPTransformPatch.applyAGPTransformPatch(project, file.toURI().toURL())
+        AGPTransformPatch.applyAGPTransformPatch(project, patchFile.toURI().toURL())
 
     }
 }
