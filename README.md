@@ -9,6 +9,20 @@
  - B、全量构建完成后，此时更新任意一个aar，再进行增量构建，此时会出现类重复。
 
 
+### 如何使用修复插件
+
+```
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.0')
+    }
+}
+apply plugin: 'agp-transform-patch'
+```
+
 
 #### A复现步骤
 
