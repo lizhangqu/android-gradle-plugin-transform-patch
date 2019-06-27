@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    buildToolsVersion rootProject.ext.configuration.buildToolsVersion
+    compileSdkVersion rootProject.ext.configuration.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.configuration.minSdkVersion
+        targetSdkVersion rootProject.ext.configuration.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+ext {
+    RELEASE_REPOSITORY_URL = "file://${project.rootProject.file('repo')}"
+    SNAPSHOT_REPOSITORY_URL = "file://${project.rootProject.file('repo')}"
+    RELEASE_REPOSITORY_USERNAME = ""
+    RELEASE_REPOSITORY_PASSWORD = ""
+    SNAPSHOT_REPOSITORY_USERNAME = ""
+    SNAPSHOT_REPOSITORY_PASSWORD = ""
+}
+apply plugin: 'android.publish'

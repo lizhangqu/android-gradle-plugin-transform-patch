@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+apply plugin: 'reproduce-agp-transform-bug'
+apply plugin: 'agp-transform-patch'
+
+android {
+    buildToolsVersion rootProject.ext.configuration.buildToolsVersion
+    compileSdkVersion rootProject.ext.configuration.compileSdkVersion
+    defaultConfig {
+        applicationId "io.github.lizhangqu.host"
+        minSdkVersion rootProject.ext.configuration.minSdkVersion
+        targetSdkVersion rootProject.ext.configuration.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            zipAlignEnabled true
+            debuggable true
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+    implementation project(path: ':library')
+//    implementation "io.github.lizhangqu:library:1.0.0-SNAPSHOT"
+}
