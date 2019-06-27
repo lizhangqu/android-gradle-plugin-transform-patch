@@ -6,6 +6,9 @@ buildscript {
         maven {
             url "https://maven.google.com"
         }
+        maven {
+            url ' https://dl.bintray.com/lizhangqu/maven'
+        }
         jcenter()
         mavenCentral()
     }
@@ -24,6 +27,9 @@ repositories {
         }
         maven {
             url "https://maven.google.com"
+        }
+        maven {
+            url ' https://dl.bintray.com/lizhangqu/maven'
         }
         maven {
             url "file://${project.rootProject.file('../repo')}"
@@ -56,5 +62,4 @@ dependencies {
     implementation("com.android.tools.build:gradle:${androidGradlePluginVersion}") {
         changing = true
     }
-
 }

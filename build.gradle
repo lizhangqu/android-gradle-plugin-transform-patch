@@ -2,11 +2,15 @@
 
 buildscript {
     repositories {
+
         maven {
             url 'http://nexus.vdian.net/repository/android/'
         }
         maven {
             url "https://maven.google.com"
+        }
+        maven {
+            url ' https://dl.bintray.com/lizhangqu/maven'
         }
         maven {
             url "file://${project.rootProject.file('repo')}"
@@ -47,6 +51,9 @@ allprojects {
         }
         maven {
             url "https://maven.google.com"
+        }
+        maven {
+            url ' https://dl.bintray.com/lizhangqu/maven'
         }
         maven {
             url "file://${project.rootProject.file('repo')}"
