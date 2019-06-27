@@ -10,21 +10,28 @@ import java.lang.reflect.Method;
  * agp transform patch when use agp 3.2.0+
  */
 public class AGPTransformPatch {
+    public static boolean shouldApplyPatch() {
+        String version = getAndroidGradlePluginVersionCompat();
+        if (version == null) {
+            return false;
+        }
+        String[] splitVersions = version.split("\\.");
+        if (splitVersions == null || splitVersions.length < 3) {
+            return false;
+        }
+        int major = Integer.parseInt(splitVersions[0]);
+        int minor = Integer.parseInt(splitVersions[1]);
+        //only agp 3.2.0+ need to apply patch
+        if (major < 3 || (major == 3 && minor < 2)) {
+            return false;
+        }
+        return true;
+    }
+
     public static void applyAGPTransformPatch(Project project, URL url) {
         try {
-            String version = getAndroidGradlePluginVersionCompat();
-            if (version == null) {
-                return;
-            }
-            String[] splitVersions = version.split("\\.");
-            if (splitVersions == null || splitVersions.length < 3) {
-                return;
-            }
-            int major = Integer.parseInt(splitVersions[0]);
-            int minor = Integer.parseInt(splitVersions[1]);
-            //only agp 3.2.0+ need to apply patch
-            if (major < 3 || (major == 3 && minor < 2)) {
-                return;
+            if (!shouldApplyPatch()) {
+                return
             }
             //why not use to replace classloader ?
             //because there are some problems when replace it.

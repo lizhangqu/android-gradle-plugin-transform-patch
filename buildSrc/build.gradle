@@ -66,3 +66,6 @@ dependencies {
 group = "io.github.lizhangqu"
 archivesBaseName = "plugin-agp-transform-patch"
 apply plugin: 'android.publish'
+pom {
+    exclude "com.android.tools.build:gradle"
+}
