@@ -25,7 +25,7 @@ TransformOutputProvider asOutput(boolean isIncremental) throws IOException {
 
 但是在3.2.0以下版本，该文件不会被删除，文件名命名规则从该文件中最大的index开始递增，当触发背景中的两个场景的时候，由于文件名递增没有被清零所以新增文件触发added事件，原先该被remove的文件触发removed事件，不会出现类重复
 
-### 如何使用修复插件
+#### 如何使用修复插件
 
 ```
 buildscript {
