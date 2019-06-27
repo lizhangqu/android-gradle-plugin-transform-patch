@@ -16,6 +16,10 @@ buildscript {
         it.resolutionStrategy.cacheDynamicVersionsFor(5, 'minutes')
         it.resolutionStrategy.cacheChangingModulesFor(0, 'seconds')
     }
+
+    dependencies {
+        classpath('io.github.lizhangqu:core-publish:1.4.0') { changing = true }
+    }
 }
 
 apply plugin: 'groovy'
@@ -63,3 +67,8 @@ dependencies {
         changing = true
     }
 }
+
+
+group = "io.github.lizhangqu"
+archivesBaseName = "plugin-agp-transfrom-patch"
+apply plugin: 'android.publish'
