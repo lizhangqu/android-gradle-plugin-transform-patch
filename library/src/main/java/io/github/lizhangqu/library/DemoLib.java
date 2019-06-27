@@ -6,4 +6,7 @@ package io.github.lizhangqu.library;
  * @since 2019-06-25 14:24
  */
 public class DemoLib {
+    public void test(){
+
+    }
 }
