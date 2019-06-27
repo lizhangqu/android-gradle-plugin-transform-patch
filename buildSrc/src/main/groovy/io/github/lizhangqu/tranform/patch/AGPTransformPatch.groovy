@@ -13,7 +13,6 @@ import java.util.List;
  * agp transform patch when use agp 3.2.0+
  */
 public class AGPTransformPatch {
-    @SuppressWarnings({"ConstantConditions", "unchecked"})
     public static void applyAGPTransformPatch(Project project, URL url) {
         try {
             String version = getAndroidGradlePluginVersionCompat();
@@ -44,7 +43,9 @@ public class AGPTransformPatch {
             Method getLoaderMethod = ucpClass.getDeclaredMethod("getLoader", URL.class);
             getLoaderMethod.setAccessible(true);
             Object loader = getLoaderMethod.invoke(ucp, url);
-            loaders.add(0, loader);
+            if (!loaders.first().getBaseURL().equals(loader.getBaseURL())) {
+                loaders.add(0, loader);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw new GradleException("Apply agp transform patch failed, please report it.");

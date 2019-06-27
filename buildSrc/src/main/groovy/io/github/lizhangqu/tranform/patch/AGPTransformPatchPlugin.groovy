@@ -23,7 +23,7 @@ public class AGPTransformPatchPlugin implements Plugin<Project> {
         }
 
         if (patchFile == null) {
-            project.logger.error("can't get patch patchFile")
+            project.logger.error("can't get transform patch's patchFile")
             return
         }
         AGPTransformPatch.applyAGPTransformPatch(project, patchFile.toURI().toURL())
