@@ -64,5 +64,5 @@ dependencies {
 
 
 group = "io.github.lizhangqu"
-archivesBaseName = "plugin-agp-transfrom-patch"
+archivesBaseName = "plugin-agp-transform-patch"
 apply plugin: 'android.publish'
