@@ -27,6 +27,8 @@ TransformOutputProvider asOutput(boolean isIncremental) throws IOException {
 
 #### 如何使用修复插件
 
+对于工程目录中没有buildSrc模块的工程，可使用如下方式
+
 ```
 buildscript {
     repositories {
@@ -36,9 +38,26 @@ buildscript {
         classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1')
     }
 }
+
+//在对应模块中应用插件
 apply plugin: 'agp-transform-patch'
 ```
 
+如果工程目录中有buildSrc模块，请不要使用如上的buildscript方式，而是将依赖添加到buildSrc工程的依赖中
+
+```
+dependencies {
+    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1') {
+        changing = true
+    }
+    compile "com.android.tools.build:gradle:3.2.1"
+}
+```
+
+然后在对应模块中应用插件
+```
+apply plugin: 'agp-transform-patch'
+```
 
 #### A复现步骤
 
@@ -166,6 +185,8 @@ apply plugin: 'reproduce-agp-transform-bug'
 
 1、应用修复bug用的patch插件
 
+对于工程目录中没有buildSrc模块的工程，可使用如下方式
+
 ```
 buildscript {
     repositories {
@@ -175,8 +196,27 @@ buildscript {
         classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1')
     }
 }
+
+//在对应模块中应用插件
 apply plugin: 'agp-transform-patch'
 ```
+
+如果工程目录中有buildSrc模块，请不要使用如上的buildscript方式，而是将依赖添加到buildSrc工程的依赖中
+
+```
+dependencies {
+    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1') {
+        changing = true
+    }
+    compile "com.android.tools.build:gradle:3.2.1"
+}
+```
+
+然后在对应模块中应用插件
+```
+apply plugin: 'agp-transform-patch'
+```
+
 
 2、重复A复现步骤，类重复问题已经被修复
 
@@ -205,6 +245,8 @@ transformInvocation.outputProvider.getContentLocation(it.getFile().toString(), i
 
 1、应用修复bug用的patch插件
 
+对于工程目录中没有buildSrc模块的工程，可使用如下方式
+
 ```
 buildscript {
     repositories {
@@ -214,7 +256,26 @@ buildscript {
         classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1')
     }
 }
+
+//在对应模块中应用插件
 apply plugin: 'agp-transform-patch'
 ```
+
+如果工程目录中有buildSrc模块，请不要使用如上的buildscript方式，而是将依赖添加到buildSrc工程的依赖中
+
+```
+dependencies {
+    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.1') {
+        changing = true
+    }
+    compile "com.android.tools.build:gradle:3.2.1"
+}
+```
+
+然后在对应模块中应用插件
+```
+apply plugin: 'agp-transform-patch'
+```
+
 
 2、重复B复现步骤，类重复问题已经被修复
