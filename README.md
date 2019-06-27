@@ -4,8 +4,10 @@
 
 在android gradle plugin 3.2.0以上版本，增量编译时如果aar发生了改变，则会出现类重复，典型的两个场景如下
 
-A、全量构建完成后，此时更新任意一个aar，再进行增量构建，此时会出现类重复。
-B、以project依赖进行全量构建后，将project发布到远程，再将project依赖修改成aar远程依赖，再进行增量构建，此时会出现类重复。
+
+A、以project依赖进行全量构建后，将project发布到远程，再将project依赖修改成aar远程依赖，再进行增量构建，此时会出现类重复。
+B、全量构建完成后，此时更新任意一个aar，再进行增量构建，此时会出现类重复。
+
 
 
 #### A复现步骤
@@ -81,16 +83,15 @@ dependencies {
 
 ```
 dependencies {
-    implementation "io.github.lizhangqu:library:1.0.0-SNAPSHOT"
+    implementation project(path: ':library')
 }
 ```
 
-
 修改为
-```
 
+```
 dependencies {
-    implementation project(path: ':library')
+    implementation "io.github.lizhangqu:library:1.0.0-SNAPSHOT"
 }
 ```
 
