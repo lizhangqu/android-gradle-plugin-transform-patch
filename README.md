@@ -59,6 +59,13 @@ dependencies {
 apply plugin: 'agp-transform-patch'
 ```
 
+
+如果不生效，可先将守护进程杀死
+
+```
+./gradlew --stop
+```
+
 #### A复现步骤
 
 1, 将app模块中对library模块的依赖修改为project依赖
