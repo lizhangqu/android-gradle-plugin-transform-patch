@@ -19,6 +19,9 @@ public class AGPTransformPatchByPreInitPlugin implements Plugin<Project> {
             project.gradle.addListener(new TaskExecutionListener() {
                 @Override
                 void beforeExecute(Task task) {
+                    if (task.getProject() != project) {
+                        return
+                    }
                     //noinspection GroovyAccessibility
                     if (task instanceof TransformTask && task.outputStream != null) {
                         //noinspection GroovyAccessibility
