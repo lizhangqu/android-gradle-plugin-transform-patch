@@ -43,7 +43,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.3')
+        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.4')
     }
 }
 
@@ -57,7 +57,7 @@ apply plugin: 'agp-transform-patch'
 
 ```
 dependencies {
-    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.3') {
+    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.4') {
         changing = true
     }
     compile "com.android.tools.build:gradle:3.2.1"
@@ -225,7 +225,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.3')
+        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.4')
     }
 }
 
@@ -239,7 +239,7 @@ apply plugin: 'agp-transform-patch'
 
 ```
 dependencies {
-    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.3') {
+    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.4') {
         changing = true
     }
     compile "com.android.tools.build:gradle:3.2.1"
@@ -301,7 +301,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.3')
+        classpath('io.github.lizhangqu:plugin-agp-transform-patch:1.0.4')
     }
 }
 
@@ -313,7 +313,7 @@ apply plugin: 'agp-transform-patch'
 
 ```
 dependencies {
-    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.3') {
+    compile('io.github.lizhangqu:plugin-agp-transform-patch:1.0.4') {
         changing = true
     }
     compile "com.android.tools.build:gradle:3.2.1"
