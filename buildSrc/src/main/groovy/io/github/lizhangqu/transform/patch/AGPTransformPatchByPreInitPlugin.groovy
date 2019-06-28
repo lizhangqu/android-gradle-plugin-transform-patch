@@ -8,6 +8,9 @@ import org.gradle.api.execution.TaskExecutionListener
 import org.gradle.api.tasks.TaskState
 
 
+/**
+ * 通过提前初始化，在__content__.json文件被删除前进行反序列化，达到修复目的
+ */
 public class AGPTransformPatchByPreInitPlugin implements Plugin<Project> {
 
     @Override
