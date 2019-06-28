@@ -49,6 +49,8 @@ buildscript {
 
 //在对应模块中应用插件
 apply plugin: 'agp-transform-patch'
+//或使用提前初始化方式
+//apply plugin: 'agp-transform-patch-by-pre-init'
 ```
 
 如果工程目录中有buildSrc模块，请不要使用如上的buildscript方式，而是将依赖添加到buildSrc工程的依赖中
@@ -65,6 +67,8 @@ dependencies {
 然后在对应模块中应用插件
 ```
 apply plugin: 'agp-transform-patch'
+//或使用提前初始化方式
+//apply plugin: 'agp-transform-patch-by-pre-init'
 ```
 
 
@@ -227,6 +231,8 @@ buildscript {
 
 //在对应模块中应用插件
 apply plugin: 'agp-transform-patch'
+//或使用提前初始化方式
+//apply plugin: 'agp-transform-patch-by-pre-init'
 ```
 
 如果工程目录中有buildSrc模块，请不要使用如上的buildscript方式，而是将依赖添加到buildSrc工程的依赖中
@@ -243,6 +249,8 @@ dependencies {
 然后在对应模块中应用插件
 ```
 apply plugin: 'agp-transform-patch'
+//或使用提前初始化方式
+//apply plugin: 'agp-transform-patch-by-pre-init'
 ```
 
 
@@ -315,6 +323,8 @@ dependencies {
 然后在对应模块中应用插件
 ```
 apply plugin: 'agp-transform-patch'
+//或使用提前初始化方式
+//apply plugin: 'agp-transform-patch-by-pre-init'
 ```
 
 
