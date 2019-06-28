@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'reproduce-agp-transform-bug'
 //apply plugin: 'agp-transform-patch'
+//apply plugin: 'agp-transform-patch-by-pre-init'
+
 
 android {
     buildToolsVersion rootProject.ext.configuration.buildToolsVersion
