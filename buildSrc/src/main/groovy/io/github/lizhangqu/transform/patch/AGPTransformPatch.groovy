@@ -1,4 +1,4 @@
-package io.github.lizhangqu.tranform.patch;
+package io.github.lizhangqu.transform.patch;
 
 import org.gradle.api.GradleException;
 import org.gradle.api.Project;
