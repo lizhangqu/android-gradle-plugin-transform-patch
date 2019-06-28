@@ -2,6 +2,8 @@
 
 #### 背景
 
+分析文章见 [治治这个 google 一年没修的 agp transform bug](https://lizhangqu.github.io/2019/06/28/%E6%B2%BB%E6%B2%BB%E8%BF%99%E4%B8%AAgoogle%E4%B8%80%E5%B9%B4%E6%B2%A1%E4%BF%AE%E7%9A%84agp-transform-bug/)
+
 在android gradle plugin 3.2.0以上版本，增量编译时如果aar发生了改变，则会出现类重复，典型的两个场景如下
 
 
