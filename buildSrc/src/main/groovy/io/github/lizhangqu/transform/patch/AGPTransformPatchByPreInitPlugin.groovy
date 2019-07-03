@@ -25,7 +25,9 @@ public class AGPTransformPatchByPreInitPlugin implements Plugin<Project> {
                     //noinspection GroovyAccessibility
                     if (task instanceof TransformTask && task.outputStream != null) {
                         //noinspection GroovyAccessibility
-                        task.outputStream.init()
+                        task.doFirst {
+                            task.outputStream.init()
+                        }
                     }
                 }
 
